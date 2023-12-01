@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="./src/css/style.css">
+		<link rel="stylesheet" type="text/css" href="./src/css/Normalize.css">
+		<meta charset="utf-8">
+		<script src="node_modules/chart.js/dist/chart.umd.js"></script>
+		<title>EconomiaCatan</title>
+	</head>
+	<body id="container">
+		<header class="header">
+			<h1 class="header__h1">Ayuda De Catan</h1>
+			<nav class="header-nav">
+				<ul class="header-nav__shortcuts">
+					<li><a href="" class="header-nav__shortcuts-a">Jugadores</a></li>
+					<li><a href="" class="header-nav__shortcuts-a">Admin dinero</a></li>
+					<li><a href="" class="header-nav__shortcuts-a">Numero aleatorio</a></li>
+					<li><a href="" class="header-nav__shortcuts-a">Grafico</a></li>
+				</ul>
+			</nav>
+		</header>
+		<main id="main" class="main-players">
+			<section>
+				<article class="turns-players">
+					<div class="turns-players__turnRound">
+						<h2>Rondas y turnos</h2>
+						<p>Numero de rondas:</p>
+						<p><span id="numeroRonda">0</span></p>
+						<p>Numero de turnos:</p>
+						<p><span id="numeroTurno">0</span></p>
+					</div>
+					<div class="turns-players__actualTurn">
+						<h2>Turno actual de:</h2>
+						<p><span id="turnoActual">error 0002</span></p>
+						<button id="turnoPass">Pasar turno</button>
+					</div>
+				</article>
+				<article class="money-players">
+					<div class="money-players__display">
+						<h2>Monedas totales</h2>
+						<p><span id="moneyPerPlayer">error 0003</span></p>
+					</div>
+					<div class="money-players__setMoney">
+						<button id="moneySustract5">-5</button>
+						<button id="moneySustract">-</button>
+						<span id="moneyChange">0</span>
+						<button id="moneyAdd">+</button>
+						<button id="moneyAdd5">+5</button>
+						<br>
+						<p id="genMoneyPlayerh1">error0005</p>
+					</div>
+					<div class="money-players__randomizer">
+						<h2>Calculador de economia</h2>
+						<p>Randomizer:</p>
+						<p><span>0</span></p>
+					</div>
+				</article>
+				<article>
+					<div>
+						<h2>Tutoriales</h2>
+						<!-- <iframe src="https://www.youtube.com/embed/RIEyJpNxugg" title="Aprende a jugar Catan en 5 minutos" frameborder="5" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+					</div>
+				</article>
+			</section>
+			<aside classs="sidebar">
+				<div class="sidebar__display">
+					<h2 class="sidebar__display-h2">Jugadores:</h2>
+					<p id="genJugadores">error 0001</p>
+				</div>
+		    </aside>
+		</main>
+		<script type="text/javascript" src="./src/js/script.js"></script>
+		<script type="text/javascript" src="./src/js/lineChart.js"></script>
+	</body>
+</html>

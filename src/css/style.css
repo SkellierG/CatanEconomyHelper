@@ -1,0 +1,44 @@
+header {
+	background-color: #0c76b3;
+}
+
+main {
+	transition: all .3s ease-out;
+	width: 100%;
+	padding-left: 10px;
+	margin: auto;
+	background-color: #f0f8ff;
+}
+
+iframe {
+	width: 561px;
+	max-width: 100%;
+}
+
+.sidebar {
+	text-align: center;
+	height: 100%;
+	width: 20%;
+	max-width: 1500px;
+	min-width: 100px;
+	float: right;
+	overflow: auto;
+}
+
+.sidebar__display {
+	background-color: #0c76b3;
+	color: #87cefa;
+}
+
+.sidebar__display-p {
+	display: block;
+}
+
+.header__h1 {
+	text-align: center;
+	color: #87cefa;
+}
+
+.header-nav__shortcuts-a {
+	color: #87cefa;
+}

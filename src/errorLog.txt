@@ -1,0 +1,4 @@
+error0001= Jugadores no definidos;
+error0002= Error al no reconocer el jugador actual del turno;
+error0003= No se an podido reconocer los valores;
+error0004= ;
