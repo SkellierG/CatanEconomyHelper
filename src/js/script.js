@@ -73,22 +73,18 @@ turnPass.addEventListener("click", ()=>{
 moneyObject.add.addEventListener("click", ()=>{
 	moneyObject.valorlet++;
 	moneyObject.valor.textContent = moneyObject.valorlet;
-	console.log(moneyObject.valorlet);
 });
 moneyObject.substract.addEventListener("click", ()=>{
 	moneyObject.valorlet--;
 	moneyObject.valor.textContent = moneyObject.valorlet;
-	console.log(moneyObject.valorlet);
 });
 moneyObject.add5.addEventListener("click", ()=>{
 	moneyObject.valorlet += 5;
 	moneyObject.valor.textContent = moneyObject.valorlet;
-	console.log(moneyObject.valorlet);
 });
 moneyObject.substract5.addEventListener("click", ()=>{
 	moneyObject.valorlet -= 5;
 	moneyObject.valor.textContent = moneyObject.valorlet;
-	console.log(moneyObject.valorlet);
 });
 
 /*botones para asignar dinero a los jugadores
@@ -97,15 +93,10 @@ moneyObject.substract5.addEventListener("click", ()=>{
 function genMoneyPlayerButtons() {
 	let buttons = [];
 	for (let i = 1; i < playersNames.length; i++) {
-		buttons[i] = `<button id="moneyPlayer${i}">${i}</button>`;
+		buttons[i] = `<button id="moneyPlayer${i}" class="moneyPLayerButton">${i}</button>`;
 	}
 	return buttons.join(``);
 }
-
-
-
-
-
 
 if (genMoneyPlayerh1) {
 	genMoneyPlayerh1.innerHTML = genMoneyPlayerButtons();

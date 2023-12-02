@@ -1,5 +1,9 @@
 header {
-	background-color: #E85117;
+	background-color: #E82c17;
+	width: 100%;
+	clear: both;
+	content: '';
+	display: table;
 }
 
 main {
@@ -15,26 +19,25 @@ iframe {
 	max-width: 100%;
 }
 
-.sidebar {
-	text-align: center;
-	height: 100%;
-	width: 20%;
-	max-width: 1500px;
-	min-width: 100px;
+.header {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.header-nav{
 	float: right;
-	overflow: auto;
+	margin-right: 32%;
 }
 
-.sidebar__display {
-	background-color: #E85117;
-	color: #E8B017;
-}
-
-.sidebar__display-p {
-	display: block;
+nav ul li {
+	list-style: none;
+	margin-left: 20px;
+	padding: 20px 0px;
+	float: left;
 }
 
 .header__h1 {
+	font-size: 300%;
 	text-align: center;
 	color: #E8B017;
 }
@@ -43,8 +46,44 @@ iframe {
 	height: 10%;
 	width: 10%;
 	float: left;
+	padding: 5px;
 }
 
 .header-nav__shortcuts-a {
+	background-color: #E82c17;
 	color: #E8B017;
+}
+
+.sidebar {
+	text-align: center;
+	height: 100vh;
+	width: 40%;
+	max-width: 1500px;
+	min-width: 100px;
+	float: right;
+	overflow: auto;
+	background-color: #f6d8a8;
+}
+
+.sidebar__display {
+	text-align: center;
+	height: 100vh;
+	width: 40%;
+	max-width: 1500px;
+	min-width: 100px;
+	float: right;
+	background-color: #f6d8a8;
+}
+
+.sidebar__display-h2 {
+	background-color: #911c0e;
+	color: #E8B017;
+}
+
+.sidebar__display-p {
+	color: #911c0e;
+}
+
+.moneyPLayerButton {
+	margin-right: 10px;
 }
