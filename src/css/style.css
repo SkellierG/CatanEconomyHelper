@@ -1,5 +1,5 @@
 header {
-	background-color: #0c76b3;
+	background-color: #E85117;
 }
 
 main {
@@ -7,7 +7,7 @@ main {
 	width: 100%;
 	padding-left: 10px;
 	margin: auto;
-	background-color: #f0f8ff;
+	background-color: #fcf2e2;
 }
 
 iframe {
@@ -26,8 +26,8 @@ iframe {
 }
 
 .sidebar__display {
-	background-color: #0c76b3;
-	color: #87cefa;
+	background-color: #E85117;
+	color: #E8B017;
 }
 
 .sidebar__display-p {
@@ -36,9 +36,15 @@ iframe {
 
 .header__h1 {
 	text-align: center;
-	color: #87cefa;
+	color: #E8B017;
+}
+
+.header__img {
+	height: 10%;
+	width: 10%;
+	float: left;
 }
 
 .header-nav__shortcuts-a {
-	color: #87cefa;
+	color: #E8B017;
 }
