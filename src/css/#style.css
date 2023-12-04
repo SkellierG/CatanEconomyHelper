@@ -1,0 +1,89 @@
+header {
+	background-color: #E82c17;
+	width: 100%;
+	clear: both;
+	content: '';
+	display: table;
+}
+
+main {
+	transition: all .3s ease-out;
+	width: 100%;
+	padding-left: 10px;
+	margin: auto;
+	background-color: #fcf2e2;
+}
+
+iframe {
+	width: 561px;
+	max-width: 100%;
+}
+
+.header {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.header-nav{
+	float: right;
+	margin-right: 32%;
+}
+
+nav ul li {
+	list-style: none;
+	margin-left: 20px;
+	padding: 20px 0px;
+	float: left;
+}
+
+.header__h1 {
+	font-size: 300%;
+	text-align: center;
+	color: #E8B017;
+}
+
+.header__img {
+	height: 10%;
+	width: 10%;
+	float: left;
+	padding: 5px;
+}
+
+.header-nav__shortcuts-a {
+	background-color: #E82c17;
+	color: #E8B017;
+}
+
+.sidebar {
+	text-align: center;
+	height: 100vh;
+	width: 40%;
+	max-width: 1500px;
+	min-width: 100px;
+	float: right;
+	overflow: auto;
+	background-color: #f6d8a8;
+}
+
+.sidebar__display {
+	text-align: center;
+	height: 100vh;
+	width: 40%;
+	max-width: 1500px;
+	min-width: 100px;
+	float: right;
+	background-color: #f6d8a8;
+}
+
+.sidebar__display-h2 {
+	background-color: #911c0e;
+	color: #E8B017;
+}
+
+.sidebar__display-p {
+	color: #911c0e;
+}
+
+.moneyPLayerButton {
+	margin-right: 10px;
+}

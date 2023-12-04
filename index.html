@@ -9,48 +9,49 @@
 	</head>
 	<body id="container">
 		<header>
-			<div class="header">
-				<img class="header__img"src="./assets/catanLogo.png">
-				<h1 class="header__h1">Ayuda De Catan</h1>
-				<nav class="header-nav">
-					<ul class="header-nav__shortcuts">
-						<li><a href="#turnos&rondas" class="header-nav__shortcuts-a">Rondas y turnos</a></li>
-						<li><a href="#adminDinero" class="header-nav__shortcuts-a">Dinero</a></li>
-						<li><a href="#economiaGrafico" class="header-nav__shortcuts-a">Economia</a></li>
-						<li><a href="#graficoId" class="header-nav__shortcuts-a">Grafico</a></li>
+			<div>
+				<img src="./assets/catanLogo.png">
+				<h1>Ayuda De Catan</h1>
+				<nav>
+					<ul>
+						<li><a href="#turnos&rondas">Rondas y turnos</a></li>
+						<li><a href="#adminDinero">Dinero</a></li>
+						<li><a href="#economiaGrafico">Economia</a></li>
+						<li><a href="#graficoId">Grafico</a></li>
+						<li><a href="./src/vtutoriales.html">Tutoriales</a></li>
 					</ul>
 				</nav>
 			</div>
 		</header>
-		<main id="main" class="main-players">
+		<main id="main">
 			<section>
-				<aside classs="sidebar">
-					<div class="sidebar__display">
-						<h2 class="sidebar__display-h2">Jugadores:</h2>
+				<aside>
+					<div>
+						<h2>Jugadores:</h2>
 						<p id="genJugadores">error 0001</p>
 						<br><br>
-						<h2 class="sidebar__display-h2">Monedas totales</h2>
+						<h2>Monedas totales</h2>
 						<p><span id="moneyPerPlayer">error 0003</span></p>
 					</div>
 			    </aside>
-				<article id="turnos&rondas" class="turns-players">
-					<div class="turns-players__turnRound">
+				<article id="turnos&rondas">
+					<div>
 						<h2>Rondas y turnos</h2>
 						<p>Numero de rondas:</p>
 						<p><span id="numeroRonda">0</span></p>
 						<p>Numero de turnos:</p>
 						<p><span id="numeroTurno">0</span></p>
 					</div>
-					<div class="turns-players__actualTurn">
+					<div>
 						<h2>Turno actual de:</h2>
 						<p><span id="turnoActual">error 0002</span></p>
 						<button id="turnoPass">Pasar turno</button>
 					</div>
 				</article>
 				<br><br>
-				<article id="adminDinero" class="money-players">
-					<div class="money-players__setMoney">
-						<h2 class="money-players__setMoney-h2">Dinero</h2>
+				<article id="adminDinero">
+					<div>
+						<h2>Dinero</h2>
 						<button id="moneySustract5">-5</button>
 						<button id="moneySustract">-</button>
 						<span id="moneyChange">0</span>
@@ -62,7 +63,7 @@
 				</article>
 				<br><br>
 				<article id="economiaGrafico">
-					<div class="money-players__randomizer">
+					<div>
 						<h2>Calculador de economia</h2>
 						<p>Randomizer:</p>
 						<p><span id="span">0</span></p>
@@ -85,7 +86,7 @@
 					</div>
 				</article> -->
 			</section>
-			<section id="graficoId" class="grafico">
+			<section id="graficoId">
 			    <article>
 			        <canvas id="myChart"></canvas>
 			    </article>
