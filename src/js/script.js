@@ -26,12 +26,77 @@ let turnoActual = 0;
 let rondaActual = 0;
 let turnoActualToPlayersTotal = 0;
 
+//set jugadores(old)
+/*let playersNames = [];*/
 //set jugadores
-let playersNames = [];
 
-setPlayers();
+let players = [];
+let playersTotal = 0;
+
+const playersdata = sessionStorage.getItem('playersSave');
+
+if (playersdata) {
+    players = JSON.parse(playersdata);
+}
+
+const totaldata = sessionStorage.getItem('playersTotalSave');
+
+if (totaldata) {
+    playersTotal = parseInt(totaldata);
+}
+
+
+players[0] = {
+    turn: "[0]",
+    name: "Economia",
+    money: 0
+};
 
 function setPlayers() {
+	let playersNamesDisplay = "";
+	let display = [];
+	playersTotal = parseInt(prompt("¿Cuantos jugadores hay?"));
+	while (playersTotal < 2 || playersTotal > 4) {
+		alert("cantidad de jugadores invalida, por favor usar un valor entre 2 y 4");
+		playersTotal = parseInt(prompt("¿Cuantos jugadores hay?"));
+	}
+	if (playersTotal >= 2 || playersTotal <= 4) {
+		alert("Añadir los nombres en orden de sus turnos (del primero al ultimo)");
+		for (let i = 1; i < (playersTotal + 1); i++) {
+		    players.push({
+		        turn: `[${i}]`,
+		        name: prompt(`Nombre del jugador ${i}`),
+		        money: 0
+		    });
+			display[i] = `<p id="player${i}">${players[i].turn} ${players[i].name}</p>`;
+			playersNamesDisplay = display.join(``);
+		}
+		genJugadores.innerHTML = `${playersNamesDisplay}`;
+		sessionStorage.setItem('playersSave', JSON.stringify(players));
+		sessionStorage.setItem('playersTotalSave', playersTotal);
+	}
+	else setPlayers();
+}
+
+function setPlayersSave() {
+    let playersNamesDisplay = "";
+	let display = [];
+    
+    for (let i = 1; i < (playersTotal + 1); i++) {
+        display[i] = `<p id="player${i}">${players[i].turn} ${players[i].name}</p>`;
+    	playersNamesDisplay = display.join(``);
+    }
+	genJugadores.innerHTML = `${playersNamesDisplay}`;
+}
+
+if (!playersdata) {
+    setPlayers();
+}
+else {
+    setPlayersSave();
+}
+
+/*function setPlayers() {
 	let playersNamesDisplay = "";
 	let buttons = [];
 	let playersTotal = parseInt(prompt("¿Cuantos jugadores hay?"));
@@ -50,16 +115,16 @@ function setPlayers() {
 		playersNames.unshift("Economia");
 	}
 	else setPlayers();
-}
+}*/
 
 //cambiar el turno y contar la cantidad de turnos y rondas totales
 
 turnPass.addEventListener("click", ()=>{
 	turnoActual++;
 	turnoActualToPlayersTotal++;
-	currentTurn.textContent = playersNames[turnoActualToPlayersTotal - 1];
-	if (turnoActualToPlayersTotal == (playersNames.length)) {
-		currentTurn.textContent = playersNames[turnoActualToPlayersTotal - 1];
+	currentTurn.textContent = players[turnoActualToPlayersTotal - 1].turn + players[turnoActualToPlayersTotal - 1].name;
+	if (turnoActualToPlayersTotal == players.length) {
+		currentTurn.textContent = players[turnoActualToPlayersTotal - 1].turn + players[turnoActualToPlayersTotal - 1].name;
 		turnoActual--
 		turnoActualToPlayersTotal = 0;
 		rondaActual++;
@@ -92,8 +157,8 @@ moneyObject.substract5.addEventListener("click", ()=>{
 
 function genMoneyPlayerButtons() {
 	let buttons = [];
-	for (let i = 1; i < playersNames.length; i++) {
-		buttons[i] = `<button id="moneyPlayer${i}" class="moneyPLayerButton">${i}</button>`;
+	for (let i = 1; i < players.length; i++) {
+		buttons[i] = `<button id="moneyPlayer${i}">${players[i].turn + players[i].name}</button>`;
 	}
 	return buttons.join(``);
 }
