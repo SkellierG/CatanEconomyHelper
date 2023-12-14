@@ -22,9 +22,11 @@ const moneyObject = {
 const genMoneyPlayerh1 = document.getElementById("genMoneyPlayerh1");
 
 //valores globales
-let turnoActual = 0;
-let rondaActual = 0;
-let turnoActualToPlayersTotal = 0;
+let turnObject = {
+    turnoActual: 0,
+    rondaActual: 0,
+    turnoActualToPlayersTotal: 0
+};
 
 //set jugadores(old)
 /*let playersNames = [];*/
@@ -117,20 +119,30 @@ else {
 	else setPlayers();
 }*/
 
+const turndata = sessionStorage.getItem('turnSave');
+
+if (turndata) {
+    turnObject = JSON.parse(turndata);
+    currentTurn.textContent = players[turnObject.turnoActualToPlayersTotal - 1].turn + players[turnObject.turnoActualToPlayersTotal - 1].name;
+    actualNumberTurnsRounds.ronda.textContent = turnObject.rondaActual;
+    actualNumberTurnsRounds.turno.textContent = turnObject.turnoActual;
+}
+
+
 //cambiar el turno y contar la cantidad de turnos y rondas totales
 
 turnPass.addEventListener("click", ()=>{
-	turnoActual++;
-	turnoActualToPlayersTotal++;
-	currentTurn.textContent = players[turnoActualToPlayersTotal - 1].turn + players[turnoActualToPlayersTotal - 1].name;
-	if (turnoActualToPlayersTotal == players.length) {
-		currentTurn.textContent = players[turnoActualToPlayersTotal - 1].turn + players[turnoActualToPlayersTotal - 1].name;
-		turnoActual--
-		turnoActualToPlayersTotal = 0;
-		rondaActual++;
-		actualNumberTurnsRounds.ronda.textContent = rondaActual;
+	turnObject.turnoActual++;
+	turnObject.turnoActualToPlayersTotal++;
+	currentTurn.textContent = players[turnObject.turnoActualToPlayersTotal - 1].turn + players[turnObject.turnoActualToPlayersTotal - 1].name;
+	if (turnObject.turnoActualToPlayersTotal == players.length) {
+		currentTurn.textContent = players[turnObject.turnoActualToPlayersTotal - 1].turn + players[turnObject.turnoActualToPlayersTotal - 1].name;
+		turnObject.turnoActual--
+		turnObject.turnoActualToPlayersTotal = 0;
+		turnObject.rondaActual++;
+		actualNumberTurnsRounds.ronda.textContent = turnObject.rondaActual;
 	}
-	actualNumberTurnsRounds.turno.textContent = turnoActual;
+	actualNumberTurnsRounds.turno.textContent = turnObject.turnoActual;
 });
 
 //añadir y restar dinero 
@@ -170,5 +182,6 @@ if (genMoneyPlayerh1) {
 //actualizacion del programa (10 FPS)
 function animate() {
 	requestAnimationFrame(animate, 10);
+	sessionStorage.setItem('turnSave', JSON.stringify(turnObject));
 }
 animate();
