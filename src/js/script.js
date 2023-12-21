@@ -22,6 +22,7 @@ const moneyObject = {
 const genMoneyPlayerh1 = document.getElementById("genMoneyPlayerh1");
 
 //valores globales
+//mm
 let turnObject = {
     turnoActual: 0,
     rondaActual: 0,
