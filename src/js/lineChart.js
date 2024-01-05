@@ -15,6 +15,14 @@ let numeroRandom = 0;
 let valorNumeroRandom = [0, -3, -2, -1, 1, 2, 3];
 let numeroActual = 0;
 let elNumero = 0;
+
+const getGrafico = sessionStorage.getItem('dataGrafico');
+
+let saveGrafico = [0];
+
+if (getGrafico) {
+    saveGrafico = JSON.parse(getGrafico);
+};
     
 // Inicializa los datos
 let turnos = [];
@@ -121,6 +129,7 @@ submitBoton.addEventListener("click", ()=>{
 	}
     numeroActual++;
     agregarDato(numeroActual, diff);
+    saveGrafico.push(diff);
     numeroRandom = 0;
     randomObject.valorlet = 0;
     randomObject.valor.textContent = randomObject.valorlet;
@@ -128,3 +137,16 @@ submitBoton.addEventListener("click", ()=>{
 })
     
 // Puedes llamar a agregarDato con nuevos valores cada vez que ingreses un nuevo dato.
+
+for (let i = 1; i < saveGrafico.length; i++) {
+    numeroActual++;
+    agregarDato(numeroActual, saveGrafico[i]);
+}
+
+//actualizacion del programa (10 FPS)
+function animate() {
+	requestAnimationFrame(animate, 10);
+	save();
+}
+
+animate();

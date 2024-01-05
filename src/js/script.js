@@ -12,17 +12,18 @@ const turnPass = document.getElementById("turnoPass");
 
 const moneyObject = {
 	valorlet: 0,
-	valor: document.getElementById("moneyChange"),
-	add: document.getElementById("moneyAdd"),
-	add5: document.getElementById("moneyAdd5"),
-	substract: document.getElementById("moneySustract"),
-	substract5: document.getElementById("moneySustract5")
+	valor: document.getElementById("moneyChange")
 }
 
 const genMoneyPlayerh1 = document.getElementById("genMoneyPlayerh1");
 
+function save() {
+    sessionStorage.setItem('turnSave', JSON.stringify(turnObject));
+    
+    sessionStorage.setItem('dataGrafico', JSON.stringify(saveGrafico))
+}
+
 //valores globales
-//mm
 let turnObject = {
     turnoActual: 0,
     rondaActual: 0,
@@ -38,21 +39,19 @@ let playersTotal = 0;
 
 const playersdata = sessionStorage.getItem('playersSave');
 
-if (playersdata) {
-    players = JSON.parse(playersdata);
-}
-
 const totaldata = sessionStorage.getItem('playersTotalSave');
-
-if (totaldata) {
-    playersTotal = parseInt(totaldata);
-}
-
 
 players[0] = {
     turn: "[0]",
     name: "Economia",
     money: 0
+};
+
+if (playersdata) {
+    players = JSON.parse(playersdata);
+};
+if (totaldata) {
+    playersTotal = parseInt(totaldata);
 };
 
 function setPlayers() {
@@ -71,6 +70,13 @@ function setPlayers() {
 		        name: prompt(`Nombre del jugador ${i}`),
 		        money: 0
 		    });
+		    while (players[i].name === null || players[i].name === "" || players[i].name.length > 10 || players[i].name.length < 4) {
+		        alert("nombre invalido, vuelva a intentar");
+		        players[i] = {
+		        turn: `[${i}]`,
+		        name: prompt(`Nombre del jugador ${i}`),
+		        money: 0
+		    }}
 			display[i] = `<p id="player${i}">${players[i].turn} ${players[i].name}</p>`;
 			playersNamesDisplay = display.join(``);
 		}
@@ -97,8 +103,7 @@ if (!playersdata) {
 }
 else {
     setPlayersSave();
-}
-
+};
 /*function setPlayers() {
 	let playersNamesDisplay = "";
 	let buttons = [];
@@ -125,10 +130,9 @@ const turndata = sessionStorage.getItem('turnSave');
 if (turndata) {
     turnObject = JSON.parse(turndata);
     currentTurn.textContent = players[turnObject.turnoActualToPlayersTotal - 1].turn + players[turnObject.turnoActualToPlayersTotal - 1].name;
-    actualNumberTurnsRounds.ronda.textContent = turnObject.rondaActual;
+        actualNumberTurnsRounds.ronda.textContent = turnObject.rondaActual;
     actualNumberTurnsRounds.turno.textContent = turnObject.turnoActual;
-}
-
+};
 
 //cambiar el turno y contar la cantidad de turnos y rondas totales
 
@@ -148,22 +152,19 @@ turnPass.addEventListener("click", ()=>{
 
 //añadir y restar dinero 
 
-moneyObject.add.addEventListener("click", ()=>{
-	moneyObject.valorlet++;
+function restAddMoney(num, type) {
+    switch (type) {
+        case 0:
+            moneyObject.valorlet = moneyObject.valorlet + num;
+            break;
+        case 1:
+            moneyObject.valorlet = moneyObject.valorlet - num;
+            break;
+        default:
+            moneyObject.valorlet = moneyObject.valorlet + num;
+    }
 	moneyObject.valor.textContent = moneyObject.valorlet;
-});
-moneyObject.substract.addEventListener("click", ()=>{
-	moneyObject.valorlet--;
-	moneyObject.valor.textContent = moneyObject.valorlet;
-});
-moneyObject.add5.addEventListener("click", ()=>{
-	moneyObject.valorlet += 5;
-	moneyObject.valor.textContent = moneyObject.valorlet;
-});
-moneyObject.substract5.addEventListener("click", ()=>{
-	moneyObject.valorlet -= 5;
-	moneyObject.valor.textContent = moneyObject.valorlet;
-});
+}
 
 /*botones para asignar dinero a los jugadores
 (la cantidad depende de la cantidad de jugadores)*/
@@ -171,18 +172,18 @@ moneyObject.substract5.addEventListener("click", ()=>{
 function genMoneyPlayerButtons() {
 	let buttons = [];
 	for (let i = 1; i < players.length; i++) {
-		buttons[i] = `<button id="moneyPlayer${i}">${players[i].turn + players[i].name}</button>`;
+		buttons[i] = `<button id="moneyPlayer${i}" onclick="updateMoney(${i})">${players[i].turn + players[i].name}</button><br>`;
 	}
 	return buttons.join(``);
 }
 
-if (genMoneyPlayerh1) {
-	genMoneyPlayerh1.innerHTML = genMoneyPlayerButtons();
+function updateMoney(player) {
+    players[player].money = players[player].money + moneyObject.valorlet;
+    moneyObject.valorlet = 0;
+    moneyObject.valor.textContent = moneyObject.valorlet;
+    //alert(players[player].money)
 }
 
-//actualizacion del programa (10 FPS)
-function animate() {
-	requestAnimationFrame(animate, 10);
-	sessionStorage.setItem('turnSave', JSON.stringify(turnObject));
-}
-animate();
+if (genMoneyPlayerh1) {
+    genMoneyPlayerh1.innerHTML = genMoneyPlayerButtons();
+};
